@@ -1,6 +1,6 @@
 use std::{io::{self, Write}, ops::{ControlFlow, Range}, str::FromStr, sync::Arc, time::{Duration, Instant, SystemTime, UNIX_EPOCH}};
 
-use drillx::equix;
+use drillx_2::equix;
 use futures_util::{SinkExt, StreamExt};
 use rpassword::read_password;
 use solana_sdk::{pubkey::Pubkey, signature::{read_keypair_file, Keypair, Signature}, signer::Signer};
@@ -152,17 +152,13 @@ async fn main() {
                                             let mut nonce = first_nonce;
                                             let mut best_nonce = nonce;
                                             let mut best_difficulty = 0;
-                                            let mut best_hash = drillx::Hash::default();
+                                            let mut best_hash = drillx_2::Hash::default();
                                             let mut total_hashes: u64 = 0;
 
                                             loop {
                                                 // Create hash
-                                                total_hashes += 1;
-                                                if let Ok(hx) = drillx::hash_with_memory(
-                                                    &mut memory,
-                                                    &challenge,
-                                                    &nonce.to_le_bytes(),
-                                                ) {
+                                               for hx in  drillx_2::get_hashes_with_memory(&mut memory, &challenge, &nonce.to_le_bytes()) {
+                                                    total_hashes += 1;
                                                     let difficulty = hx.difficulty();
                                                     if difficulty.gt(&best_difficulty) {
                                                         best_nonce = nonce;
