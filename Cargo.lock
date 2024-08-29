@@ -814,14 +814,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "drillx"
-version = "2.0.0"
+name = "drillx_2"
+version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0c5fd3a8f11a6420d6efb1952c8c2e788627cb2c9e834537dc4b6bd036461646"
+checksum = "af4e3aca4ae86ab0d0050f50b322adab7c0e93904896a5c60bdb33324ea1d36a"
 dependencies = [
  "equix",
  "serde",
- "sha3",
+ "sha3 0.10.8",
  "strum",
 ]
 
@@ -1571,13 +1571,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "ore-api"
+version = "2.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7fb5950ea036425d694af2c2894e1d0efb66a0babb6fbb83331ece3e103857bd"
+dependencies = [
+ "array-const-fn-init",
+ "bytemuck",
+ "const-crypto",
+ "drillx",
+ "mpl-token-metadata",
+ "num_enum",
+ "ore-utils",
+ "solana-program 1.18.21",
+ "spl-associated-token-account",
+ "spl-token 4.0.3",
+ "static_assertions",
+ "thiserror",
+]
+
+[[package]]
 name = "ore-hq-client"
 version = "0.1.0"
 dependencies = [
  "base64 0.22.1",
  "clap",
  "core_affinity",
- "drillx",
+ "drillx_2",
  "futures-util",
  "rpassword",
  "solana-sdk",
